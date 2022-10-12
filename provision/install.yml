@@ -1,0 +1,11 @@
+---
+- name: Installing UniFi Controller
+  hosts: all
+  become: yes
+
+  roles:
+    - upgrade
+    - install-jre
+    - install-rng-tools
+    - install-mongodb
+    - install-unifi-controller

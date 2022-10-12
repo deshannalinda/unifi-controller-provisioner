@@ -1,0 +1,26 @@
+---
+- name: Adding UniFi repo
+  lineinfile:
+    path: /etc/apt/sources.list.d/100-ubnt-unifi.list
+    line: deb [signed-by=/usr/share/keyrings/ubiquiti-archive-keyring.gpg] https://www.ui.com/downloads/unifi/debian stable ubiquiti
+    create: yes
+
+- name: Adding UniFi repo GPG keys
+  get_url:
+    url: https://dl.ui.com/unifi/unifi-repo.gpg
+    dest: /usr/share/keyrings/ubiquiti-archive-keyring.gpg
+
+- name: Update repositories cache
+  apt:
+    update_cache: yes
+
+- name: Installing UniFi Controller software
+  package:
+    name: unifi
+    state: present
+
+- name: Enable & start UniFi Controller
+  systemd:
+    name: unifi
+    state: started
+    enabled: yes

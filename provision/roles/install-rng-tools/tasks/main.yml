@@ -1,0 +1,16 @@
+---
+- name: Install rng-tools
+  package:
+    name: rng-tools
+    state: present
+
+- name: Configuring rng-rools
+  lineinfile:
+    path: /etc/default/rng-tools-debian
+    regexp: '^#HRNGDEVICE=/dev/hwrng'
+    line: HRNGDEVICE=/dev/hwrng
+
+- name: Restart rng-tools
+  systemd:
+    state: restarted
+    name: rng-tools

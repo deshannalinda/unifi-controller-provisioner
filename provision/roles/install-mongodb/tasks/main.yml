@@ -1,0 +1,14 @@
+---
+- name: Creating package manager preference file
+  template:
+    src: 99stretch-mongodb.pref.j2
+    dest: /etc/wpa_supplicant/wpa_supplicant.conf
+
+- name: Adding MongoDB repo
+  lineinfile:
+    path: /etc/apt/sources.list.d/stretch_mongodb.list
+    line: deb http://archive.raspbian.org/raspbian stretch main
+
+- name: Update repositories cache
+  apt:
+    update_cache: yes

@@ -1,0 +1,8 @@
+---
+- name: Initialising Pi for Prod environment
+  hosts: all
+  become: yes
+
+  roles:
+    - disable-wifi
+    - remove-ssh-key
