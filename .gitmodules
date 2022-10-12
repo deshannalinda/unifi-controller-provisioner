@@ -1,0 +1,6 @@
+[submodule "rpi-configurator"]
+	path = rpi-configurator
+	url = git@github.com:deshannalinda/rpi-configurator.git
+[submodule "rpi"]
+	path = rpi
+	url = git@github.com:deshannalinda/rpi-configurator.git
